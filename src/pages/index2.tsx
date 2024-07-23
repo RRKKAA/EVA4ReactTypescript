@@ -29,6 +29,18 @@ export const index2 = () => {
       <Perfil nombre="Pablo" apellido="Marmol" edad={30} rol="docente"/>
       <Perfil nombre="Jose" apellido="Perez" edad={15} />
 
+      <Link href='/Pagina2'>
+      <Button variant='danger' onClick={mostrar}>Salir</Button>
+      </Link>
+
+      <Link href='/Pagina3'>
+      <Button variant='danger' onClick={mostrar}>Salir</Button>
+      </Link>
+
+      <Link href='/Pagina4'>
+      <Button variant='danger' onClick={mostrar}>Salir</Button>
+      </Link>
+
       <Button variant='danger' onClick={mostrar}>Salir</Button>
       <Modal show={show} onHide={ocultar} backdrop="static" keyboard={false}>
           <Modal.Header>

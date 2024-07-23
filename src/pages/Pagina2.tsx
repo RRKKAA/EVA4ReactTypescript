@@ -40,7 +40,7 @@ export const Pagina2 = () => {
             <Form.Text></Form.Text>
         </Form.Group>
         <Form.Group>
-            <Form.Label>Apellido:</Form.Label>
+            <Form.Label>Contraseña:</Form.Label>
             <Form.Control  type='text' placeholder='Ingrese su contraseña: '
              name="password"
              onChange={(e)=>{handleUsuario(e.currentTarget.name,e.currentTarget.value)}} />

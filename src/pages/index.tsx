@@ -20,7 +20,7 @@ export default function Home() {
       setShow(true);
 
   const validarUsuario = ()=>{
-    if(password != ""){
+    if(password != undefined && typeof(password)=="string"){
       if (password.toLowerCase() == "adminadmin"){
         setNombre("Administrador")
         mostrar();
@@ -28,10 +28,8 @@ export default function Home() {
       else{
         obtenerUsuario(password).then((p)=>{
           if(p!=undefined){
-              mostrar();
-          }
-          else{
-              alert("Ingresaste la contraseña errada o la cuenta no existe, Intente de nuevo")
+            setNombre(p.nombre)
+            mostrar();
           }
         })
       }

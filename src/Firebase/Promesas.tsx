@@ -43,7 +43,7 @@ export const obtenerPersona = async(key:string)=>{
     }
 }
 export const actualizarPersona = async(p:Persona)=>{
-    const ref = doc(collection(db,"personas",p.key!))
+    const ref = doc(db,"personas",p.key!)
     await updateDoc(ref,{...p})
 }
 
@@ -65,8 +65,7 @@ export const obtenerUsuario = async(password:string)=>{
     if (docSnap.exists()) {
         let usuario:Usuario = {
             nombre:docSnap.data().nombre,
-            password:docSnap.data().password,
-            key:docSnap.id
+            password:docSnap.data().password
         }
         return usuario
     } else {

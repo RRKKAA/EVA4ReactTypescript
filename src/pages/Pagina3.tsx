@@ -22,6 +22,9 @@ export const Pagina3 = () => {
     }
 
     const registrar = ()=>{
+        if(persona.nombre == ""){
+            alert("Debes")
+        }
         registrarPersona(persona).then(()=>{
             alert("Se logro registrar")
         }).catch((e)=>{
