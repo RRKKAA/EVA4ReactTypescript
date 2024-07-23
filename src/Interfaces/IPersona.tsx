@@ -1,9 +1,11 @@
-export interface Persona{
+export interface Consulta{
     nombre:string,
     apellido:string,
+    email:string,
+    telefono:string,
     rut:string,
-    edad:number,
-    fechaNacimiento:string,
-    correo:string,
+    dia:string,
+    motivo:string,
+    comentario:string
     key?:string
 }

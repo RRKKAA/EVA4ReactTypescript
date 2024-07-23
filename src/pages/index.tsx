@@ -61,7 +61,7 @@ export default function Home() {
             </Modal.Title>
           </Modal.Header>          
           <Modal.Footer>
-            <Link href="/index2">
+            <Link href="/PaginaPrincipal">
           <Button variant="primary" onClick={ocultar}>Ingresar</Button>
           </Link>
           </Modal.Footer>

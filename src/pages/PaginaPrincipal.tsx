@@ -3,7 +3,7 @@ import Perfil from "./Componentes/Perfil";
 import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 
-export const index2 = () => {
+export const PaginaPrincipal = () => {
 
   const [show, setShow] =
   useState(false);
@@ -18,30 +18,23 @@ export const index2 = () => {
 
   return (
     <>
-      <nav>
-        <Link href='/Pagina1'>Pagina1</Link>
-        <Link href='/Pagina2'>Calculadora</Link>
-        <Link href='/Pagina3'>Registro</Link>
-        <Link href='/Pagina4'>Tabla</Link>
-      </nav>
-      <p>Hola</p>
-      <p>Chao</p>
-      <Perfil nombre="Pablo" apellido="Marmol" edad={30} rol="docente"/>
-      <Perfil nombre="Jose" apellido="Perez" edad={15} />
+      <h1> Bienvenido a la pagina principal de pc Factory</h1>
 
-      <Link href='/Pagina2'>
-      <Button variant='danger' onClick={mostrar}>Salir</Button>
-      </Link>
+      <div className="d-grid gap-2">
+        <Link href='/RegistroUsuario'>
+        <Button variant='success' size="lg" onClick={mostrar}>Registrar nuevo usuario</Button>
+        </Link>
 
-      <Link href='/Pagina3'>
-      <Button variant='danger' onClick={mostrar}>Salir</Button>
-      </Link>
+        <Link href='/RegistroConsulta'>
+        <Button variant='warning' size="lg" onClick={mostrar}>Crear nueva consulta</Button>
+        </Link>
 
-      <Link href='/Pagina4'>
-      <Button variant='danger' onClick={mostrar}>Salir</Button>
-      </Link>
+        <Link href='/TablaRegistros'>
+        <Button variant='primary' size="lg" onClick={mostrar}>Ver tabla de consultas</Button>
+        </Link>
 
-      <Button variant='danger' onClick={mostrar}>Salir</Button>
+        <Button variant='danger' size="lg" onClick={mostrar}>Salir de la pagina</Button>
+      </div>
       <Modal show={show} onHide={ocultar} backdrop="static" keyboard={false}>
           <Modal.Header>
             <Modal.Title>
@@ -62,4 +55,4 @@ export const index2 = () => {
     
   );
 }
-export default index2
+export default PaginaPrincipal

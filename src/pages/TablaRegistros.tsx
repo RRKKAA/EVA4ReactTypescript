@@ -1,6 +1,5 @@
-import { eliminarPersona, obtenerPersona, obtenerPersonas } from '@/Firebase/Promesas'
-import { Persona } from '@/Interfaces/IPersona'
-import { query } from 'firebase/firestore'
+import { eliminarConsulta, obtenerConsultas, obtenerConsulta } from '@/Firebase/Promesas'
+import { Consulta } from '@/Interfaces/IPersona'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -9,13 +8,13 @@ import Table from 'react-bootstrap/Table'
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
-export const Pagina4 = () => {
-    const [personas, setPersonas] = useState<Persona[]>([])
+export const TablaRegistros = () => {
+    const [consultas, setConsultas] = useState<Consulta[]>([])
     useEffect(()=>{
         //Traer listado de personas desde las promesas
-        obtenerPersonas().then((personas)=>{
+        obtenerConsultas().then((consultas)=>{
             //Meter el listado dentro del estado
-            setPersonas(personas)
+            setConsultas(consultas)
         }).catch((e)=>{
             console.log(e)
             alert("Algo ocurrio")
@@ -27,16 +26,18 @@ export const Pagina4 = () => {
 
     //const []
 
-    const initialState:Persona = {
-        apellido:"",
-        correo:"",
-        edad:0,
-        fechaNacimiento:"",
+    const initialState:Consulta = {
         nombre:"",
-        rut:""
+        apellido:"",
+        email:"",
+        telefono:"",
+        rut:"",
+        dia:"",
+        motivo:"",
+        comentario:""
     }
 
-    const [persona, setPersona] = useState<Persona>(initialState)
+    const [consulta, setConsulta] = useState<Consulta>(initialState)
 
     const router = useRouter()  
 
@@ -47,20 +48,19 @@ export const Pagina4 = () => {
         setShow(true);
         const key = router.query.key;
         if(key!=undefined && typeof(key)=="string"){
-            obtenerPersona(key).then((g)=>{
+            obtenerConsulta(key).then((g)=>{
                 if(g!=undefined){
-                    setPersona(g)
+                    setConsulta(g)
                 }
             })
         }
-        return key
     }
 
     const eliminar = ()=>{
         setShow(false);
         const key = router.query.key;
         if(key!=undefined && typeof(key)=="string"){
-            eliminarPersona(key).then(()=>{
+            eliminarConsulta(key).then(()=>{
                 alert("La cuenta ha sido eliminada con exito")
             })
         }
@@ -75,26 +75,29 @@ export const Pagina4 = () => {
                     <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
                         <th>Rut</th>
-                        <th>Correo</th>
-                        <th>Fecha Nacimiento</th>
-                        <th>Edad</th>
-                        <th>Accion</th>
+                        <th>Dia</th>
+                        <th>Motivo</th>
+                        <th>Comentario</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        personas.map((p)=>{
+                        consultas.map((p)=>{
                             return(
                                 <tr>
                                     <td>{p.nombre}</td> 
                                     <td>{p.apellido}</td>
+                                    <td>{p.email}</td>
+                                    <td>{p.telefono}</td>
                                     <td>{p.rut}</td>
-                                    <td>{p.correo}</td>
-                                    <td>{p.fechaNacimiento}</td>
-                                    <td>{p.edad}</td>
+                                    <td>{p.dia}</td>
+                                    <td>{p.motivo}</td>
+                                    <td>{p.comentario}</td>
                                     <td>
-                                        <Link href={{pathname:'Pagina5',query:{key:p.key}}}>
+                                        <Link href={{pathname:'ActualizacionRegistros',query:{key:p.key}}}>
                                         <Button variant='warning'><FaEdit /></Button>
                                         </Link>
                                         <Link href={{query:{key:p.key}}}>
@@ -103,11 +106,11 @@ export const Pagina4 = () => {
                                         <Modal show={show} onHide={ocultar} backdrop="static" keyboard={false}>
                                             <Modal.Header>
                                                 <Modal.Title>
-                                                    Eliminar Cuenta {persona.nombre}
+                                                    Eliminar Consulta de {consulta.nombre} {consulta.apellido}
                                                 </Modal.Title>
                                             </Modal.Header>
                                             <Modal.Body>
-                                                ¿En serio deseas eliminar tu cuenta? La eliminacion sera permanente y tendras que registrarte otra vez si lo haces. ¿Deseas continuar?
+                                                ¿En serio deseas eliminar esta? La eliminacion sera permanente y tendras que registrarte otra vez si lo haces. ¿Deseas continuar?
                                             </Modal.Body>
                                             <Modal.Footer>
                                                 <Button variant="warning" onClick={ocultar}>Cancelar</Button>
@@ -125,4 +128,4 @@ export const Pagina4 = () => {
         </>
   )
 }
-export default Pagina4
+export default TablaRegistros

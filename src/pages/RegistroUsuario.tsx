@@ -10,7 +10,7 @@ const initialState:Usuario = {
     password:""
 }
 
-export const Pagina2 = () => {
+export const RegistroUsuario = () => {
     const [usuario, setUsuario] = useState<Usuario>(initialState)
     
     const handleUsuario = (name:string,value:string)=>{
@@ -53,4 +53,4 @@ export const Pagina2 = () => {
     </>
   )
 }
-export default Pagina2
+export default RegistroUsuario
