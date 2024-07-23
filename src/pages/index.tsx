@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button, Form, Modal, } from "react-bootstrap";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
 import { obtenerUsuario } from "@/Firebase/Promesas";
 
 export default function Home() {

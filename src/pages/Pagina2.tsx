@@ -29,7 +29,7 @@ export const Pagina2 = () => {
 
   return (
     <>
-    {/* nombre,apellido,correo,fechaNacimiento,edad,rut */}
+    {}
     
     <Form>
         <Form.Group>
