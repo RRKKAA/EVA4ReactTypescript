@@ -22,15 +22,15 @@ export const PaginaPrincipal = () => {
 
       <div className="d-grid gap-2">
         <Link href='/RegistroUsuario'>
-        <Button variant='success' size="lg" onClick={mostrar}>Registrar nuevo usuario</Button>
+        <Button variant='success' size="lg">Registrar nuevo usuario</Button>
         </Link>
 
         <Link href='/RegistroConsulta'>
-        <Button variant='warning' size="lg" onClick={mostrar}>Crear nueva consulta</Button>
+        <Button variant='warning' size="lg">Crear nueva consulta</Button>
         </Link>
 
         <Link href='/TablaRegistros'>
-        <Button variant='primary' size="lg" onClick={mostrar}>Ver tabla de consultas</Button>
+        <Button variant='primary' size="lg">Ver tabla de consultas</Button>
         </Link>
 
         <Button variant='danger' size="lg" onClick={mostrar}>Salir de la pagina</Button>
